@@ -1,0 +1,56 @@
+<div class="header">
+
+    <h2>Members</h2>
+
+    <button
+      class="add-member-btn"
+      routerLink="/members/add">
+      + Add Member
+    </button>
+
+  </div>
+
+<table border="1">
+
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Membership</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let member of members">
+
+      <td>{{ member.memberId }}</td>
+      <td>{{ member.firstName }}</td>
+      <td>{{ member.lastName }}</td>
+      <td>{{ member.email }}</td>
+      <td>{{ member.phoneNumber }}</td>
+      <td>{{ member.membershipType }}</td>
+      <td>
+        {{ member.isActive ? 'Active' : 'Inactive' }}
+      </td>
+
+      <td>
+        <button class="edit-btn"
+          [routerLink]="['/members/edit', member.memberId]">
+          Edit
+        </button>
+
+        <button class="delete-btn"
+          (click)="deleteMember(member.memberId)">
+          Delete
+        </button>
+      </td>
+
+    </tr>
+  </tbody>
+
+</table>
